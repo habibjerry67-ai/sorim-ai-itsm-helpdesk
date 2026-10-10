@@ -202,13 +202,16 @@ If uncertain, recommend IT review.
         )
         ticket_id = cursor.lastrowid
         conn.commit()
-    except Exception:
+ 
+    except Exception as e:
         if conn:
             conn.rollback()
+        print("INCIDENT DATABASE ERROR:", repr(e))
         raise HTTPException(
             status_code=500,
             detail="Could not save incident to database.",
         )
+
     finally:
         if cursor:
             cursor.close()
