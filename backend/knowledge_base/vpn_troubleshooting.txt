@@ -1,0 +1,19 @@
+# VPN Troubleshooting
+
+Symptoms:
+- VPN fails to connect.
+- Employee cannot access internal company resources.
+- VPN connection repeatedly disconnects.
+
+Troubleshooting:
+1. Check that the device has an active internet connection.
+2. Confirm that the approved company VPN client is installed and updated.
+3. Disconnect and reconnect using the company's approved VPN configuration.
+4. If the issue continues, contact Network Support with the error message and approximate time of failure.
+
+Security:
+- Never share passwords or MFA codes with support staff.
+- Do not disable security controls or change firewall settings without IT authorization.
+
+Escalation:
+If multiple employees are affected or the VPN outage blocks critical work, escalate to Network Support.

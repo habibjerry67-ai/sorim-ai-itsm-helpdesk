@@ -1,0 +1,20 @@
+Outlook Email Sync Troubleshooting
+
+Symptoms:
+- Outlook is not receiving new emails.
+- The inbox is not synchronizing.
+- Outlook displays a disconnected status.
+
+Troubleshooting:
+1. Check that the device has an active internet connection.
+2. Check whether Outlook displays Working Offline or Disconnected.
+3. If Working Offline is enabled, disable it and allow Outlook to reconnect.
+4. Restart Outlook and check whether new emails arrive.
+5. If synchronization still fails, contact IT Support.
+
+Security:
+- Never share passwords or MFA codes.
+- Do not delete mail profiles or data without IT approval.
+
+Escalation:
+If email synchronization continues to fail, contact IT Support with the error message.
