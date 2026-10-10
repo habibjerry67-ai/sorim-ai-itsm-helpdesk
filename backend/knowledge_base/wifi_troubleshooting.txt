@@ -1,0 +1,9 @@
+Corporate Wi-Fi Troubleshooting
+
+If an employee cannot connect to corporate Wi-Fi, verify that Wi-Fi is enabled and that the employee has selected the correct corporate network.
+
+Ask the employee to disconnect and reconnect. Check whether other devices can connect and whether the issue affects one employee or multiple employees.
+
+If the device still cannot connect, record the error message and device details. Escalate authentication failures to Network Support and widespread connectivity failures to the network operations team.
+
+Do not ask employees to share their passwords. Record troubleshooting actions and results in the support ticket.

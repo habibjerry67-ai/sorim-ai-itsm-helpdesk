@@ -1,0 +1,9 @@
+Printer Troubleshooting
+
+If an employee cannot print, verify that the printer is powered on, connected to the network, and has paper and toner. Check for paper jams and error indicators.
+
+Confirm that the correct printer is selected and that the print queue does not contain stuck jobs. Restart the print job and, if approved, restart the printer.
+
+If printing still fails, record the printer name, location, error message, and affected employees. Escalate unresolved issues to End User Computing Support.
+
+Do not install unapproved printer drivers or change device security settings without authorization.

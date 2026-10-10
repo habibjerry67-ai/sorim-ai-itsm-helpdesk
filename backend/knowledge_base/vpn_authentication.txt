@@ -1,0 +1,7 @@
+VPN Authentication Troubleshooting
+
+If an employee cannot authenticate to the company VPN, first verify that the employee is using the correct corporate username and password. Check whether the account is locked or the password has expired.
+
+Confirm that multi-factor authentication (MFA) is enabled and that the employee can approve the authentication request. Verify that the device date and time are correct.
+
+If authentication continues to fail, collect the exact error message and timestamp. Escalate repeated authentication failures to the Identity Support team. Never ask employees to share their passwords or MFA codes.

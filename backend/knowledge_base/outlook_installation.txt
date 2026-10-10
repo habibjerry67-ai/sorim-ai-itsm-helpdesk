@@ -1,0 +1,9 @@
+Outlook Installation and Configuration
+
+If Microsoft Outlook fails to open or configure, verify that the employee has a valid corporate account and an active Microsoft 365 license.
+
+Check the internet connection and confirm that Outlook is updated. If the application repeatedly crashes, restart Outlook and the computer. If the issue continues, use the approved Office repair process.
+
+For synchronization problems, verify that Outlook is connected to the server and that the mailbox is not full. Record any error messages before escalating to the Messaging Support team.
+
+Never request an employee's password. If the issue cannot be resolved with these steps, create an IT support ticket with the error details.
