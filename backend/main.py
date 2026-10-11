@@ -9,6 +9,7 @@ from provisioning import request_software
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+from servicenow_client import create_servicenow_incident
 
 load_dotenv()
 
@@ -218,6 +219,38 @@ If uncertain, recommend IT review.
         if conn:
             conn.close()
 
+            snow_incident = None
+            snow_error = None
+            urgency_map = {
+        "High": "1",
+        "Medium": "2",
+        "Low": "3",
+    }
+    impact_map = {
+        "Organization": "1",
+        "Department": "2",
+        "Individual": "3",
+    }
+    category_map = {
+        "Network / VPN": "network",
+        "Account / Access": "inquiry",
+        "Hardware": "hardware",
+        "General IT": "inquiry",
+    }
+    # Step 3: Create the incident in ServiceNow
+    try:
+        snow_incident = create_servicenow_incident(
+            short_description=description[:100],
+            description=description,
+            urgency=urgency_map[urgency],
+            impact=impact_map[impact],
+            category=category_map.get(category, "inquiry"),
+        )
+    except Exception as e:
+        snow_error = "ServiceNow incident creation failed."
+        print("SERVICENOW ERROR:", repr(e))
+
+
     return {
         "ticket_id": ticket_id,
         "ticket_type": "Incident",
@@ -234,6 +267,16 @@ If uncertain, recommend IT review.
         "status": "Open",
         "automation_executed": False,
         "llm_model": OLLAMA_MODEL,
+        "servicenow_status": (
+            
+            "created" if snow_incident else "failed"
+            
+        ),
+        
+        "servicenow_incident_number": (
+            snow_incident.get("number") if snow_incident else None
+        ),
+        "servicenow_error": snow_error,
     }
 
 
@@ -342,3 +385,26 @@ def provision_software(request: SoftwareRequest):
             status_code=500,
             detail="Could not create software request.",
         )
+# Merge these pieces into your existing backend/main.py.
+
+from fastapi import HTTPException
+from pydantic import BaseModel, Field
+from typing import Optional
+from self_heal import run_self_heal
+
+class SelfHealRequest(BaseModel):
+    description: str = Field(min_length=5, max_length=3000)
+    # DEMO ONLY. In production derive verification from a trusted auth flow.
+    identity_verified: bool = False
+    ticket_id: Optional[int] = None
+
+@app.post("/api/self-heal/run")
+def self_heal_endpoint(request: SelfHealRequest):
+    try:
+        return run_self_heal(
+            description=request.description,
+            identity_verified=request.identity_verified,
+            ticket_id=request.ticket_id,
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Self-heal workflow failed: {exc}")

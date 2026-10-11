@@ -574,10 +574,20 @@ function App() {
 
             {analysis.escalation_reason && <p>Escalation: {analysis.escalation_reason}</p>}
 
-            <p>
-              Status: {analysis.status || "Open"}. This demo creates an incident
-              record in the local database; ServiceNow integration is not configured.
-            </p>
+           jsx
+<p>
+  Status: {analysis.status || "Open"}.
+  {analysis.servicenow_status === "created" ? (
+    <>
+      {" "}ServiceNow incident created successfully:
+      {" "}
+      <strong>{analysis.servicenow_incident_number}</strong>
+    </>
+  ) : (
+    <> ServiceNow incident creation was not confirmed.</>
+  )}
+</p>
+
 
             <button
               className="secondary-button"
